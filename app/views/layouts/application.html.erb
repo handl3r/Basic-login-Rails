@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <% if !flash.empty? %>
+      <div>Notifications: </div>
+    <% end %>
+    <% flash.each do |message_type, message| %>
+      <div><%= message %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
