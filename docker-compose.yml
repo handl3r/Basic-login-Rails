@@ -1,0 +1,28 @@
+version: '3.5'
+services:
+  web:
+    container_name: web_task1_training_basic
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/my_app
+      - gems_task1_training_basic:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_task1_training_basic
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql:/var/lib/mysql
+volumes:
+  mysql:
+    driver: local
+  gems_task1_training_basic:
+    driver: local
