@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   before_action :require_logged_out, only: [:new]
 
-  def new; end
+  def new
+    byebug
+  end
 
   def create
     user = User.find_by name: params[:session][:name]
